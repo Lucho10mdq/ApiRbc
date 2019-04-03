@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Listeners;
+
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Events\OrderEvent;
+use App\Order;
+
+class OrderListener
+{
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  object  $event
+     * @return void
+     */
+    public function handle($event)
+    {
+        //
+    }
+
+    public function created( Order $order )
+    {
+        broadcast( new OrderEvent(  $order ) )->toOthers();
+    }
+
+    public function updated( Order $order )
+    {
+        broadcast( new OrderEvent(  $order ) )->toOthers();
+    }
+}
